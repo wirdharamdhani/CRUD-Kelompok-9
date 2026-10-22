@@ -14,7 +14,7 @@ class KegiatanController extends Controller
     public function index()
     {
         $kegiatans = Kegiatan::latest()->paginate(10);
-        return view('kegiatan.index',compact('kegiatans'));
+        return view('kegiatans.index',compact('kegiatans'));
     }
 
     /**
@@ -22,7 +22,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        return view('kegiatan.create');
+        return view('kegiatans.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class KegiatanController extends Controller
     ]);
 
     kegiatan::create($request->all());
-    return redirect()->route('kegiatan.index')->with('success','kegiatan berhasil ditambahkan');
+    return redirect()->route('kegiatans.index')->with('success','kegiatan berhasil ditambahkan');
     }
 
     /**
@@ -47,7 +47,7 @@ class KegiatanController extends Controller
      */
     public function show(Kegiatan $kegiatan)
     {
-        return view('kegiatan.show', compact('kegiatan'));
+        return view('kegiatans.show', compact('kegiatan'));
     }
 
     /**
@@ -55,7 +55,7 @@ class KegiatanController extends Controller
      */
     public function edit(Kegiatan $kegiatan)
     {
-        return view('kegiatan.edit',compact('kegiatan'));
+        return view('kegiatans.edit',compact('kegiatan'));
     }
 
     /**
@@ -73,7 +73,7 @@ class KegiatanController extends Controller
         ]);
 
         $kegiatan->update($request->all());
-        return redirect()->route('kegiatan.index')->with('success','kegiatan berhasil diupdate');
+        return redirect()->route('kegiatans.index')->with('success','kegiatan berhasil diupdate');
     }
 
     /**
@@ -82,6 +82,6 @@ class KegiatanController extends Controller
     public function destroy(Kegiatan $kegiatan)
     {
         $kegiatan->delete();
-        return redirect()->route('kegiatan.index')->with('success','kegiatan berhasil dihapus');
+        return redirect()->route('kegiatans.index')->with('success','kegiatan berhasil dihapus');
     }
 }
