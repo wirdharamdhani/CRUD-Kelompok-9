@@ -18,13 +18,15 @@ class KegiatanFactory extends Factory
     public function definition(): array
     {
         return [
-            'kode_kegiatan' => fake()->unique()->bothify('KG##'),
-            'nama_kegiatan' => fake()->unique()->words(3, true),
-            'kategori' => fake()->randomElement(['Perlombaan', 'Upacara', 'Olahraga']),
-            'tanggal' => fake()->date(),
-            'lokasi' => fake()->words(2, true),
-            'penanggung_jawab' => fake()->name(),
-            'keterangan' => fake()->sentence(8)
-             ];
+    'kode_kegiatan' => 'KG' . fake()->unique()->numerify('##'),
+    'nama_kegiatan' => fake()->randomElement([
+        'Upacara Bendera', 'Lomba 17 Agustusan', 'Lomba Futsal', 'Seminar Kewirausahaan'
+    ]),
+    'kategori' => fake()->randomElement(['Upacara', 'Perlombaan', 'Olahraga', 'Seminar']),
+    'tanggal' => fake()->date(),
+    'lokasi' => fake('id_ID')->city(),
+    'penanggung_jawab' => fake('id_ID')->name(),
+    'keterangan' => fake('id_ID')->sentence(6),
+];
     }
 }
