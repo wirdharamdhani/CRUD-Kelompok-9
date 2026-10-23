@@ -13,7 +13,7 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        $kegiatans = Kegiatan::latest()->paginate(10);
+        $kegiatans = Kegiatan::orderBy('kode','asc')->paginate(10);
         return view('kegiatans.index',compact('kegiatans'));
     }
 
